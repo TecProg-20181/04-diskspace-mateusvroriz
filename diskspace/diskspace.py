@@ -35,11 +35,11 @@ args = parser.parse_args()
 
 
 # ==== Disk Space ====
-
+@contract(command= 'str', returns= 'str')
 def subprocess_check_output(command):
     return subprocess.check_output(command.strip().split(' '))
 
-
+@contract(blocks= 'int,>=0', returns= 'str')
 def bytes_to_readable(blocks):
     byts = blocks * 512
     readable_bytes = byts
@@ -139,7 +139,7 @@ def show_space_list(directory='.', depth=-1, order=True):
     print_tree(file_tree, file_tree[abs_directory], abs_directory,
                largest_size, total_size)
 
-
+@contracts(returns = 'None')
 def main():
     if not args.all:
         show_space_list(args.directory, args.depth,
