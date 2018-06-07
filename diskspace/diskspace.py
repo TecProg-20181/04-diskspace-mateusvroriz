@@ -139,7 +139,7 @@ def show_space_list(directory='.', depth=-1, order=True):
     print_tree(file_tree, file_tree[abs_directory], abs_directory,
                largest_size, total_size)
 
-@contracts(returns = 'None')
+@contract(returns = 'None')
 def main():
     if not args.all:
         show_space_list(args.directory, args.depth,
